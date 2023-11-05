@@ -1,0 +1,70 @@
+[Thread 1]: Added a value
+[Thread 1]: Added a value
+[Thread 1]: Added a value
+[Thread 1]: Added a value
+[Thread 1]: Added a value
+[Thread 1]: Added a value
+[Thread 1]: Added a value
+[Thread 1]: Added a value
+[Thread 1]: Added a value
+[Thread 1]: Added a value
+[Thread 1]: Added a value
+[Thread 1]: Added a value
+[Thread 1]: Added a value
+[Thread 1]: Added a value
+[Thread 1]: Added a value
+[Thread 2]: removed the last element
+[Thread 1]: Added a value
+[Thread 1]: Added a value
+[Thread 2]: removed the last element
+[Thread 1]: Added a value
+[Thread 1]: Added a value
+[Thread 2]: removed the last element
+[Thread 1]: Added a value
+[Thread 2]: removed the last element
+[Thread 1]: Added a value
+[Thread 1]: Added a value
+[Thread 2]: removed the last element
+[Thread 1]: Added a value
+[Thread 1]: Added a value
+[Thread 2]: removed the last element
+[Thread 1]: Added a value
+[Thread 1]: Added a value
+[Thread 2]: removed the last element
+[Thread 1]: Added a value
+[Thread 1]: Added a value
+[Thread 2]: removed the last element
+[Thread 1]: Added a value
+[Thread 1]: Added a value
+[Thread 2]: removed the last element
+[Thread 2]: removed the last element
+[Thread 2]: removed the last element
+[Thread 2]: removed the last element
+[Thread 2]: removed the last element
+[Thread 2]: removed the last element
+[Thread 2]: removed the last element
+[Thread 2]: removed the last element
+[Thread 2]: removed the last element
+[Thread 3]: found the value
+[Thread 3]: found the value
+[Thread 2]: removed the last element
+[Thread 3]: found the value
+[Thread 3]: found the value
+[Thread 2]: removed the last element
+[Thread 3]: found the value
+[Thread 2]: removed the last element
+[Thread 3]: found the value
+[Thread 2]: removed the last element
+[Thread 3]: found the value
+[Thread 2]: removed the last element
+[Thread 2]: removed the last element
+[Thread 3]: found the value
+[Thread 2]: couldn't remove the last element
+[Thread 3]: didn't find the value
+[Thread 2]: couldn't remove the last element
+[Thread 3]: didn't find the value
+[Thread 2]: couldn't remove the last element
+[Thread 2]: couldn't remove the last element
+[Thread 2]: couldn't remove the last element
+[Thread 2]: couldn't remove the last element
+[Thread 2]: couldn't remove the last element
