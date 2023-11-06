@@ -1,0 +1,11 @@
+# Set properties for the plot
+set style fill solid 0.25 border
+set style boxplot outliers pointtype 7
+
+# Define the data file and columns
+datafile = "BOTH_10.csv"
+column_philosopher = 1
+column_average_time = 2
+
+# Create the box plot
+plot datafile using (column(0)):column_average_time with boxplot title "Average Time (ns)"
