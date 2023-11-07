@@ -1,6 +1,8 @@
 package org.lab04;
 
-// Filozof 6
+// 6. Rozwiązanie z jadalnią. Rozwiązanie jest modyfikacją wersji z arbitrem. Filozof, który nie zmieści się w jadalni
+//    (czyli arbiter nie pozwolił mu jeść) je „na korytarzu” podnosząc jednorazowo widelce w odwrotnej kolejności
+//    (do reszty filozofów w jadalni).
 
 import java.util.concurrent.Semaphore;
 

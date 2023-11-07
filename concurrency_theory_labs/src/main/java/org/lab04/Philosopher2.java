@@ -1,6 +1,8 @@
 package org.lab04;
 
-// 2) Filozof najpierw sprawdza, czy oba widelce nie są zajęte, i jeżeli nie są, to podnosi oba na raz
+// 2. Rozwiązanie z możliwością zagłodzenia. Każdy filozof sprawdza czy oba sąsiednie widelce są wolne i dopiero wtedy
+//    zajmuje je jednocześnie. Rozwiązanie to jest wolne od blokady, jednak w przypadku, gdy zawsze któryś z sąsiadów
+//    będzie zajęty jedzeniem, nastąpi zagłodzenie, gdyż oba widelce nigdy nie będą wolne.
 
 public class Philosopher2 extends Philosopher {
     public Philosopher2(Fork leftFork, Fork rightFork, WaitTimer timer) {

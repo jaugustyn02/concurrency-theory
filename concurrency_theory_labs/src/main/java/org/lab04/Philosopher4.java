@@ -1,6 +1,7 @@
 package org.lab04;
 
-// 4 ) Filozof za każdym razem losuje, czy najpierw podnosi lewy czy prawy widelec
+// 4. Rozwiązanie stochastyczne. Każdy filozof rzuca monetą tuż przed podniesieniem widelców i w ten sposób decyduje,
+//    który najpierw podnieść - lewy czy prawy (z prawdopodobieństwem 1 nie dojdzie do zagłodzenia).
 
 import java.util.Random;
 

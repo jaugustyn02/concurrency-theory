@@ -1,6 +1,7 @@
 package org.lab04;
 
-// 3) Filozof o numerze nieparzystym podnosi najpierw lewy widelec, a parzysty prawy
+// 3. Rozwiązanie asymetryczne. Filozofowie są ponumerowani. Filozof z parzystym numerem najpierw podnosi prawy widelec,
+//    filozof z nieparzystym numerem najpierw podnosi lewy widelec.
 
 public class Philosopher3 extends Philosopher {
     public Philosopher3(Fork leftFork, Fork rightFork, WaitTimer timer) {

@@ -38,9 +38,7 @@ public class Philosopher5 extends Philosopher {
                 count++;
             }
         }
-        catch (InterruptedException ignored) {
-            timer.addTime(this.id, waitingTime, count);
-        }
+        catch (InterruptedException ignored) {}
         finally {
             timer.addTime(this.id, waitingTime, count);
         }

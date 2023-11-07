@@ -54,7 +54,7 @@ public abstract class Philosopher extends Thread {
 
     public static Philosopher philosopherGenerator(PhilosopherType type, Fork leftFork, Fork rightFork, WaitTimer timer, Semaphore semaphore){
         return switch (type){
-            case LEFT_RIGHT -> new Philosopher1(leftFork, rightFork);
+            case LEFT_RIGHT -> new Philosopher1(leftFork, rightFork, timer);
             case BOTH -> new Philosopher2(leftFork, rightFork, timer);
             case ASYMMETRIC -> new Philosopher3(leftFork, rightFork, timer);
             case STOCHASTIC -> new Philosopher4(leftFork, rightFork, timer);

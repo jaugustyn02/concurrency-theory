@@ -1,10 +1,11 @@
 package org.lab04;
 
-// Filozof 1 (najpierw próbuje wziąć lewy widelec, a następnie prawy)
+// 1. Rozwiązanie naiwne (z możliwością blokady). Każdy filozof czeka, aż wolny będzie lewy widelec, a następnie go
+//    podnosi (zajmuje), następnie podobnie postępuje z prawym widelcem.
 
 public class Philosopher1 extends Philosopher {
-    public Philosopher1(Fork leftFork, Fork rightFork) {
-        super(leftFork, rightFork, null);
+    public Philosopher1(Fork leftFork, Fork rightFork, WaitTimer timer) {
+        super(leftFork, rightFork, timer);
     }
 
     @Override
