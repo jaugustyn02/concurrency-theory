@@ -40,10 +40,12 @@ public class WaitTimer {
         }
     }
 
-    public void saveTimeMeasurementsAsCSV(String filePath) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-            writer.write("PhilosopherID, Average Time (ns), Count, Total Time (ns)");
-            writer.newLine();
+    public void saveTimeMeasurementsAsCSV(String filePath, boolean append) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, append))) {
+            if (!append) {
+                writer.write("PhilosopherID, Average Time (ns), Count, Total Time (ns)");
+                writer.newLine();
+            }
 
             for (int i = 0; i < waitingTimes.length; i++) {
                 long time = waitingTimes[i];

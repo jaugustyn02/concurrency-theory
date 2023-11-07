@@ -8,7 +8,7 @@ set style fill solid 0.25 border
 set style boxplot outliers pointtype 7
 
 # Define the data files and columns
-datafiles = "BOTH_100.csv ASYMMETRIC_100.csv ARBITER_100.csv MODIFIED_ARBITER_100.csv"
+datafiles = "BOTH_25.csv ASYMMETRIC_25.csv ARBITER_25.csv MODIFIED_ARBITER_25.csv"
 column_average_time = 2
 
 # Create a function to clean up the plot titles
