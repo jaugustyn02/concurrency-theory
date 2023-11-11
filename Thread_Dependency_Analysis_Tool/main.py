@@ -1,10 +1,8 @@
-from file_input_parser import FileInputParser
-from dependency_matrix import DependencyMatrix
-from dependency_graph import DependencyGraph
-from fnf_determinator import FNFDeterminator
-
-INPUT_DIRECTORY_PATH = "inputs/"
-# INPUT_FILE_NAME = "test1"
+from libs.file_input_parser import FileInputParser
+from libs.dependency_matrix import DependencyMatrix
+from libs.dependency_graph import DependencyGraph
+from libs.fnf_determinator import FNFDeterminator
+from setup.setup import INPUT_DIRECTORY_PATH
 
 
 def main():
@@ -25,9 +23,9 @@ def main():
     fnf_determinator.findFNF()
     fnf_determinator.printFNF()
 
-    dependency_graph.exportToDot()
     dependency_graph.printGraph()
-    dependency_graph.saveGraph()
+    dependency_graph.exportToDot(INPUT_FILE_NAME)
+    dependency_graph.saveGraph(INPUT_FILE_NAME)
 
 
 if __name__ == "__main__":

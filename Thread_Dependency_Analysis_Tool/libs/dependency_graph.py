@@ -1,13 +1,13 @@
-from dependency_matrix import DependencyMatrix
-from copy import copy
-import igraph as ig
-import matplotlib
+from libs.dependency_matrix import DependencyMatrix
+from setup.setup import OUTPUT_DIRECTORY_PATH
+
 import matplotlib.pyplot as plt
+import igraph as ig
+import numpy as np
 
 # Uncomment if working on PyCharm:
+# import matplotlib
 # matplotlib.use('TkAgg')
-
-OUTPUT_DIRECTORY_PATH = "outputs/"
 
 
 class DependencyGraph:
@@ -40,18 +40,20 @@ class DependencyGraph:
 
     def transitive_reduction(self):
         V = self.G.vcount()
-        closure = copy(self.G.get_adjacency())
-        to_delete = [[False for _ in range(V)] for _ in range(V)]
+
+        adjacency = np.array(self.G.get_adjacency().data)
+        closure = np.array(self.G.get_adjacency().data)
+
+        for k in range(V):
+            for i in range(V):
+                for j in range(V):
+                    closure[i, j] = closure[i, j] or (closure[i, k] and closure[k, j])
+
+        closure_len_2_or_more = adjacency.dot(closure)
 
         for i in range(V):
             for j in range(V):
-                for k in range(V):
-                    if closure[i][j]:
-                        to_delete[i][j] = to_delete[i][j] or (closure[i][k] and closure[k][j])
-
-        for i in range(V):
-            for j in range(V):
-                if to_delete[i][j]:
+                if adjacency[i, j] and closure_len_2_or_more[i, j]:
                     self.removeEdge(i, j)
 
     def printGraph(self):
@@ -67,13 +69,13 @@ class DependencyGraph:
         )
         plt.show()
 
-    def exportToDot(self):
-        self.G.write(OUTPUT_DIRECTORY_PATH + 'graph.dot')
+    def exportToDot(self, filename: str):
+        self.G.write(OUTPUT_DIRECTORY_PATH + filename + '_graph.dot')
 
-    def saveGraph(self):
+    def saveGraph(self, filename: str):
         ig.plot(
             self.G,
-            target=OUTPUT_DIRECTORY_PATH + 'plot.png',
+            target=OUTPUT_DIRECTORY_PATH + filename + '_plot.png',
             vertex_size=50,
             vertex_color='lightblue',
             edge_width=0.8,
