@@ -3,13 +3,10 @@ import igraph as ig
 
 
 class FNFDeterminator:
-    G: ig.Graph
-    w: str
-    FNF_w: list[list[int]]
-
     def __init__(self, g: ig.Graph, w: str):
-        self.G = g
-        self.w = w
+        self.G: ig.Graph = g
+        self.w: str = w
+        self.FNF_w: list[list[str]] = [[]]
 
     def findFNF(self):
         q = deque()
@@ -25,7 +22,7 @@ class FNFDeterminator:
                 q.append(j)
                 section[j] = section[i] + 1
 
-        self.FNF_w = [[] for _ in range(max(section) + 1)]
+        self.FNF_w: list[list[str]] = [[] for _ in range(max(section) + 1)]
         for i, s in enumerate(section):
             self.FNF_w[s].append(self.w[i])
 

@@ -2,13 +2,10 @@ from utils.transaction import Transaction
 
 
 class DependencyMatrix:
-    A: list[str] = []
-    M: dict[dict[bool]] = {}
-    size: int = 0
-
-    def __init__(self, actions: list[str], transactions: dict[Transaction]):
-        self.A = actions
+    def __init__(self, actions: list[str], transactions: dict[str, Transaction]):
+        self.A: list[str] = actions
         self.size = len(actions)
+        self.M: dict[str, dict[str, bool]] = {}
         for a1 in actions:
             self.M[a1] = {}
             for a2 in actions:

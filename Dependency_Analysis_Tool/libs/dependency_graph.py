@@ -1,22 +1,19 @@
 from libs.dependency_matrix import DependencyMatrix
-from setup.setup import OUTPUT_DIRECTORY_PATH
+from config.config import OUTPUT_DIRECTORY_PATH
 
 import matplotlib.pyplot as plt
 import igraph as ig
 import numpy as np
 
-# Uncomment if working on PyCharm:
+# Try to uncomment if not working:
 # import matplotlib
 # matplotlib.use('TkAgg')
 
 
 class DependencyGraph:
-    G: ig.Graph
-    FNF: list[list[str]]
-    label_with_index: bool
-
-    def __init__(self, matrix: DependencyMatrix, w: str, label_with_index=False):
-        self.label_with_index = label_with_index
+    def __init__(self, matrix: DependencyMatrix, w: str, labels_with_indices=False):
+        self.labels_with_indices: bool = labels_with_indices
+        self.FNF: list[list[str]]
 
         edges = []
         for i in range(len(w)):
@@ -24,12 +21,12 @@ class DependencyGraph:
                 if matrix.M[w[i]][w[j]]:
                     edges.append((i, j))
 
-        self.G = ig.Graph(
+        self.G: ig.Graph = ig.Graph(
             edges=edges,
             directed=True,
         )
 
-        if label_with_index:
+        if labels_with_indices:
             self.G.vs['label'] = [a + ' [{}]'.format(str(i)) for i, a in enumerate(list(w))]
         else:
             self.G.vs['label'] = list(w)
