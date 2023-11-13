@@ -58,14 +58,14 @@ Input file must follow this **rules**:
 - Second line is reserved for **word (trace) w**
 - Rest of the lines can represent set of **transactions on variables**
 
-### Alphabet **A** (1st line):
+### Alphabet **A**
     A = a
 or
     
     A = a, b, c ...
 **Action symbols** in alphabet **A** must be **lowercase or uppercase letters** from English alphabet.
 
-### Word **w** (2nd line):
+### Word **w**
     w = abbd...
 **Action symbols** in **w** must belong to the alphabet **A**.
 
