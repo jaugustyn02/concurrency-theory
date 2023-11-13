@@ -50,7 +50,7 @@ test2:
 
 <img src="outputs/test2_plot.png" alt="Result plot for test1" width="500"/>
 
-Program can also show the plot in separate window and save output graph as *.dot* file.
+Program can also show result plot in a separate window and save result graph in *.dot* file.
 
 ## Input file syntax
 Input file must follow this **rules**:
@@ -58,14 +58,14 @@ Input file must follow this **rules**:
 - Second line is reserved for **word (trace) w**
 - Rest of the lines can represent set of **transactions on variables**
 
-### Alphabet **A** (1 line):
+### Alphabet **A** (1st line):
     A = a
 or
     
     A = a, b, c ...
 **Action symbols** in alphabet **A** must be **lowercase or uppercase letters** from English alphabet.
 
-### Word **w** (2 line):
+### Word **w** (2nd line):
     w = abbd...
 **Action symbols** in **w** must belong to the alphabet **A**.
 
