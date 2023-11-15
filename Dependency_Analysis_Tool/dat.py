@@ -1,7 +1,7 @@
-from libs.file_input_parser import FileInputParser
-from libs.dependency_matrix import DependencyMatrix
-from libs.dependency_graph import DependencyGraph
-from libs.fnf_determinator import FNFDeterminator
+from modules.file_input_parser import FileInputParser
+from modules.dependency_matrix import DependencyMatrix
+from modules.dependency_graph import DependencyGraph
+from modules.fnf_determinator import FNFDeterminator
 import config.config as conf
 
 import sys

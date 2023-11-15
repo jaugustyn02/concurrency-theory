@@ -1,4 +1,4 @@
-from libs.dependency_matrix import DependencyMatrix
+from modules.dependency_matrix import DependencyMatrix
 from config.config import OUTPUT_DIRECTORY_PATH
 
 import matplotlib.pyplot as plt

@@ -1,4 +1,4 @@
-from utils.transaction import Transaction
+from modules.transaction import Transaction
 
 
 class DependencyMatrix:
@@ -6,6 +6,7 @@ class DependencyMatrix:
         self.A: list[str] = actions
         self.size = len(actions)
         self.M: dict[str, dict[str, bool]] = {}
+
         for a1 in actions:
             self.M[a1] = {}
             for a2 in actions:
@@ -19,6 +20,8 @@ class DependencyMatrix:
                 mv2 = t2.getModifiedVariable()
                 rvs2 = t2.getReadVariables()
 
+                # Actions a1 and a2 are dependent if one of the actions modifies a variable, and the second action
+                # either reads or modifies the same variable.
                 if mv1 in rvs2 or mv2 in rvs1 or mv1 == mv2:
                     self.M[a1][a2] = True
 

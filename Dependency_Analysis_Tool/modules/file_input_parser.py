@@ -1,4 +1,4 @@
-from utils.transaction import Transaction
+from modules.transaction import Transaction
 import re
 
 
@@ -48,7 +48,8 @@ class FileInputParser:
                                  "alphabet)" +
                                  "\nFor example: A = a, b, c, d")
 
-            self.A = self.file_lines[0].split('=')[1].split(',')
+            self.A = list(set(self.file_lines[0].split('=')[1].split(',')))
+            print(self.A)
 
             # Extracting w with validation
             if not expression_is_valid(self.file_lines[1], WORD_PATTERN):
