@@ -1,4 +1,3 @@
-# from .modules.file_input_parser import FileInputParser
 from .modules.input_parser import InputParser
 from .modules.dependency_matrix import DependencyMatrix
 from .modules.dependency_graph import DependencyGraph
@@ -9,10 +8,6 @@ from .config import Config
 class DAT:
     def __init__(self, config: Config):
         self.config = config
-
-        # self.parser = FileInputParser()
-        # self.parser.read_input(self.filepath)
-        # self.parser.scan_and_parse()
         
         self.parser = InputParser(config.alphabet, config.raw_trace, config.raw_transactions)
 
