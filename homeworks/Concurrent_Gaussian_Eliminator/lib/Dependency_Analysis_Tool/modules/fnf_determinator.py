@@ -32,3 +32,8 @@ class FNFDeterminator:
         for section in self.FNF_w:
             fnf_w += '(' + "".join(sorted(section)) + ')'
         print(fnf_w)
+
+    def saveFNF(self, directory_path: str):
+        with open(directory_path + 'fnf.txt', 'w') as f:
+            for section in self.FNF_w:
+                f.write('(' + ",".join(sorted(section)) + ')')

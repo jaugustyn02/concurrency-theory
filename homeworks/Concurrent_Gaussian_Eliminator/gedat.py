@@ -38,7 +38,8 @@ class GEDAT:
 
 if __name__ == '__main__':
     cge = GEDAT(3)
-    cge.dat.printFNF()
-    cge.dat.printGraph()
+    # cge.dat.printFNF()
+    # cge.dat.printGraph()
     cge.dat.saveGraphToPNG()
     cge.dat.exportGraphToDot()
+    cge.dat.saveFNF()

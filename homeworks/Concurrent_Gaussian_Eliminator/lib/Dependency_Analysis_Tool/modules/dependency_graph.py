@@ -71,7 +71,7 @@ class DependencyGraph:
     def saveGraph(self, directory_path: str):
         ig.plot(
             self.G,
-            target=directory_path + '_plot.png',
+            target=directory_path + 'plot.png',
             vertex_size=50,
             vertex_color='lightblue',
             edge_width=0.8,

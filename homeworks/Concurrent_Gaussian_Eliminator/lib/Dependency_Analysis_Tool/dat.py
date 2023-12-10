@@ -17,8 +17,6 @@ class DAT:
         self.parser = InputParser(config.alphabet, config.raw_trace, config.raw_transactions)
 
         self.dependency_matrix = DependencyMatrix(self.parser.alphabet, self.parser.transactions)
-        # self.dependency_matrix.printDependencyList()
-        # self.dependency_matrix.printIndependencyList()
 
         self.dependency_graph = DependencyGraph(self.dependency_matrix, self.parser.trace, False)
         self.dependency_graph.transitive_reduction()
@@ -26,8 +24,17 @@ class DAT:
         self.fnf_determinator = FNFDeterminator(self.dependency_graph.G, self.parser.trace)
         self.fnf_determinator.findFNF()
 
+    def printDependencyList(self):
+        self.dependency_matrix.printDependencyList()
+
+    def printIndependencyList(self):
+        self.dependency_matrix.printIndependencyList()
+
     def printFNF(self):
         self.fnf_determinator.printFNF()
+
+    def saveFNF(self):
+        self.fnf_determinator.saveFNF(self.config.output_directory_path)
 
     def printGraph(self):
         self.dependency_graph.printGraph()
