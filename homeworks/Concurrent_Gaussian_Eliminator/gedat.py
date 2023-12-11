@@ -35,6 +35,9 @@ class GEDAT:
     def build_trace(self):
         self.trace = ''.join(self.alphabet)
 
+    def getFNF(self):
+        return self.dat.getFNF()
+
 
 if __name__ == '__main__':
     cge = GEDAT(3)
