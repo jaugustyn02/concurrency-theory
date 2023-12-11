@@ -13,7 +13,7 @@ class DAT:
 
         self.dependency_matrix = DependencyMatrix(self.parser.alphabet, self.parser.transactions)
 
-        self.dependency_graph = DependencyGraph(self.dependency_matrix, self.parser.trace, False)
+        self.dependency_graph = DependencyGraph(self.dependency_matrix, self.parser.trace, config.labels_with_indices)
         self.dependency_graph.transitive_reduction()
 
         self.fnf_determinator = FNFDeterminator(self.dependency_graph.G, self.parser.trace)

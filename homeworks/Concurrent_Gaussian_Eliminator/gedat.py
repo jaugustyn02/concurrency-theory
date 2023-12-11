@@ -1,5 +1,6 @@
 from lib.Dependency_Analysis_Tool.dat import DAT
 from lib.Dependency_Analysis_Tool.config import Config as DATConfig
+import config as cfg
 
 
 # Gaussian Elimination Dependency Analysis Tool
@@ -10,7 +11,7 @@ class GEDAT:
         self.build_transactions()
         self.build_trace()
         
-        dat_config = DATConfig(self.alphabet, self.trace, self.transactions, "outputs/", False)
+        dat_config = DATConfig(self.alphabet, self.trace, self.transactions, cfg.OUTPUT_DIRECTORY_PATH, cfg.LABELS_WITH_INDICES)
         self.dat = DAT(dat_config)
 
     def build_alphabet(self):

@@ -1,8 +1,7 @@
-# dat config
-INPUT_DIRECTORY_PATH = "inputs/"
 OUTPUT_DIRECTORY_PATH = "outputs/"
-PRINT_FNF = True
-PRINT_PLOT = True
+PRINT_FNF = False
+SAVE_FNF = True
+PRINT_PLOT = False
 EXPORT_PLOT_TO_PNG = True
 EXPORT_GRAPH_TO_DOT = True
 LABELS_WITH_INDICES = False
