@@ -6,10 +6,10 @@ class Transaction:
         self.modified_variable = mv
         self.read_variables = rv
 
-    def getModifiedVariable(self) -> str:
+    def get_modified_variable(self) -> str:
         return self.modified_variable
 
-    def getReadVariables(self) -> list[str]:
+    def get_read_variables(self) -> list[str]:
         return self.read_variables
 
     def __str__(self):

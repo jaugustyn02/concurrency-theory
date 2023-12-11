@@ -17,25 +17,28 @@ class DAT:
         self.dependency_graph.transitive_reduction()
 
         self.fnf_determinator = FNFDeterminator(self.dependency_graph.G, self.parser.trace)
-        self.fnf_determinator.findFNF()
+        self.fnf_determinator.find_fnf()
 
     def printDependencyList(self):
-        self.dependency_matrix.printDependencyList()
+        self.dependency_matrix.print_dependency_list()
 
     def printIndependencyList(self):
-        self.dependency_matrix.printIndependencyList()
+        self.dependency_matrix.print_independency_list()
 
-    def printFNF(self):
-        self.fnf_determinator.printFNF()
+    def print_fnf(self):
+        self.fnf_determinator.print_fnf()
 
-    def saveFNF(self):
-        self.fnf_determinator.saveFNF(self.config.output_directory_path)
+    def get_fnf(self):
+        return self.fnf_determinator.get_fnf()
 
-    def printGraph(self):
-        self.dependency_graph.printGraph()
+    def save_fnf(self):
+        self.fnf_determinator.save_fnf(self.config.output_directory_path)
 
-    def saveGraphToPNG(self):
-        self.dependency_graph.saveGraph(self.config.output_directory_path)
+    def print_graph(self):
+        self.dependency_graph.print_graph()
 
-    def exportGraphToDot(self):
-        self.dependency_graph.exportToDot(self.config.output_directory_path)
+    def save_graph_to_png(self):
+        self.dependency_graph.save_graph(self.config.output_directory_path)
+
+    def export_graph_to_dot(self):
+        self.dependency_graph.export_to_dot(self.config.output_directory_path)

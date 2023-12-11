@@ -1,6 +1,6 @@
 from lib.Dependency_Analysis_Tool.dat import DAT
 from lib.Dependency_Analysis_Tool.config import Config as DATConfig
-import config as cfg
+import lib.GaussianEliminationDependencyAnalysisTool.config as cfg
 
 
 # Gaussian Elimination Dependency Analysis Tool
@@ -36,14 +36,15 @@ class GEDAT:
     def build_trace(self):
         self.trace = ''.join(self.alphabet)
 
-    def getFNF(self):
-        return self.dat.getFNF()
+    def get_fnf(self):
+        return self.dat.get_fnf()
 
 
 if __name__ == '__main__':
-    cge = GEDAT(3)
-    # cge.dat.printFNF()
-    # cge.dat.printGraph()
-    cge.dat.saveGraphToPNG()
-    cge.dat.exportGraphToDot()
-    cge.dat.saveFNF()
+    cge = GEDAT(4)
+    # cge.dat.print_fnf()
+    # cge.dat.print_graph()
+    cge.dat.save_graph_to_png()
+    cge.dat.export_graph_to_dot()
+    cge.dat.save_fnf()
+    print(cge.get_fnf())

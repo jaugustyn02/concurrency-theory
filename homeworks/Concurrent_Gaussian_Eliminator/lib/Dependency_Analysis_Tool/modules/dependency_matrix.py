@@ -14,18 +14,18 @@ class DependencyMatrix:
 
         for a1, t1 in transactions.items():
             for a2, t2 in transactions.items():
-                mv1 = t1.getModifiedVariable()
-                rvs1 = t1.getReadVariables()
+                mv1 = t1.get_modified_variable()
+                rvs1 = t1.get_read_variables()
 
-                mv2 = t2.getModifiedVariable()
-                rvs2 = t2.getReadVariables()
+                mv2 = t2.get_modified_variable()
+                rvs2 = t2.get_read_variables()
 
                 # Actions a1 and a2 are dependent if one of the actions modifies a variable, and the second action
                 # either reads or modifies the same variable.
                 if mv1 in rvs2 or mv2 in rvs1 or mv1 == mv2:
                     self.M[a1][a2] = True
 
-    def printDependencyList(self):
+    def print_dependency_list(self):
         dp_list = []
         for a1 in self.A:
             for a2 in self.A:
@@ -33,7 +33,7 @@ class DependencyMatrix:
                     dp_list.append("({}, {})".format(a1, a2))
         print("D = {" + ', '.join(dp_list) + "}")
 
-    def printIndependencyList(self):
+    def print_independency_list(self):
         idp_list = []
         for a1 in self.A:
             for a2 in self.A:

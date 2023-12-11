@@ -30,7 +30,7 @@ class DependencyGraph:
         else:
             self.G.vs['label'] = list(w)
 
-    def removeEdge(self, source, target):
+    def remove_edge(self, source, target):
         eid = self.G.get_eid(source, target)
         self.G.delete_edges(eid)
 
@@ -50,9 +50,9 @@ class DependencyGraph:
         for i in range(V):
             for j in range(V):
                 if adjacency[i, j] and closure_len_2_or_more[i, j]:
-                    self.removeEdge(i, j)
+                    self.remove_edge(i, j)
 
-    def printGraph(self):
+    def print_graph(self):
         fig, ax = plt.subplots()
         ig.plot(
             self.G,
@@ -65,10 +65,10 @@ class DependencyGraph:
         )
         plt.show()
 
-    def exportToDot(self, directory_path: str):
+    def export_to_dot(self, directory_path: str):
         self.G.write(directory_path + 'graph.dot')
 
-    def saveGraph(self, directory_path: str):
+    def save_graph(self, directory_path: str):
         ig.plot(
             self.G,
             target=directory_path + 'plot.png',

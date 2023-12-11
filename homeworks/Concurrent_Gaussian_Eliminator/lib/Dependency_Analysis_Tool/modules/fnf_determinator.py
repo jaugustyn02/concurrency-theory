@@ -8,7 +8,7 @@ class FNFDeterminator:
         self.w: str = w
         self.FNF_w: list[list[str]] = [[]]
 
-    def findFNF(self):
+    def find_fnf(self):
         # Running BFS on graph G starting from every vertex, that does not have entering edges
         q = deque()
         section = [-1 for _ in range(self.G.vcount())]
@@ -27,13 +27,16 @@ class FNFDeterminator:
         for vertex_index, s in enumerate(section):
             self.FNF_w[s].append(self.w[vertex_index])
 
-    def printFNF(self):
+    def print_fnf(self):
         fnf_w = "FNF([w]) = "
         for section in self.FNF_w:
             fnf_w += '(' + "".join(sorted(section)) + ')'
         print(fnf_w)
 
-    def saveFNF(self, directory_path: str):
+    def get_fnf(self):
+        return self.FNF_w
+
+    def save_fnf(self, directory_path: str):
         with open(directory_path + 'fnf.txt', 'w') as f:
             for section in self.FNF_w:
                 f.write('(' + ",".join(sorted(section)) + ')')
