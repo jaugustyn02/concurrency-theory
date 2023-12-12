@@ -1,34 +1,10 @@
 from lib.GaussianEliminationDependencyAnalysisTool.gedat import GEDAT
+from lib.GaussianEliminationDependencyAnalysisTool.modules.task import Task
 from modules.file_input_parser import FileInputParser
 import concurrent.futures
 
 
-class Task:
-    def __init__(self, string: str):
-        self.type = self.read_task_type(string)
-
-        if self.type == 'A':
-            self.i, self.k = self.read_A_indices(string)
-        elif self.type == 'B':
-            self.i, self.j, self.k = self.read_B_indices(string)
-        elif self.type == 'C':
-            self.i, self.j, self.k = self.read_C_indices(string)
-        else:
-            raise Exception('Invalid task type')
-        
-    def read_task_type(self, string: str):
-        return string[0]
-    
-    def read_A_indices(self, A: str):
-        return int(A[1])-1, int(A[3])-1
-    
-    def read_B_indices(self, B: str):
-        return int(B[1])-1, int(B[3])-1, int(B[5])-1
-    
-    def read_C_indices(self, C: str):
-        return int(C[1])-1, int(C[3])-1, int(C[5])-1
-
-
+# Concurrent Gaussian Elimination
 class CGE:
     def __init__(self, matrix: list[list[float]]):
         self.M = matrix
@@ -51,9 +27,6 @@ class CGE:
     # M_k_j = M_k_j - n_k_i
     def thread_C(self, M: list[list[float]], n: list[list[list[float]]], i: int, j: int, k: int):
         M[k][j] = M[k][j] - n[k][i][j]
-
-    def read_A_indices(self, A: str):
-        return int(A[1]), int(A[3])
     
     def print_2d_matrix(self, matrix: list[list[float]]):
         for row in matrix:
@@ -83,7 +56,6 @@ class CGE:
         for section_id, section in enumerate(self.fnf):
             executor = concurrent.futures.ThreadPoolExecutor(max_workers=len(section))
             for task in section:
-                task = Task(task)
                 if task.type == 'A':
                     executor.submit(self.thread_A, m, self.M, task.i, task.k)
                 elif task.type == 'B':

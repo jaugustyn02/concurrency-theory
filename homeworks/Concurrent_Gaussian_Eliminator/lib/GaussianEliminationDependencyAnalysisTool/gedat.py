@@ -1,6 +1,7 @@
-from lib.Dependency_Analysis_Tool.dat import DAT
-from lib.Dependency_Analysis_Tool.config import Config as DATConfig
+from lib.DependencyAnalysisTool.dat import DAT
+from lib.DependencyAnalysisTool.config import Config as DATConfig
 import lib.GaussianEliminationDependencyAnalysisTool.config as cfg
+from lib.GaussianEliminationDependencyAnalysisTool.modules.task import Task
 
 
 # Gaussian Elimination Dependency Analysis Tool
@@ -36,8 +37,18 @@ class GEDAT:
     def build_trace(self):
         self.trace = ''.join(self.alphabet)
 
-    def get_fnf(self):
+    def get_raw_fnf(self) -> list[list[str]]:
         return self.dat.get_fnf()
+
+    def get_fnf(self) -> list[list[Task]]:
+        raw_fnf = self.get_raw_fnf()
+        fnf = []
+        for section in raw_fnf:
+            fnf_section = []
+            for task in section:
+                fnf_section.append(Task(task))
+            fnf.append(fnf_section)
+        return fnf
 
 
 if __name__ == '__main__':

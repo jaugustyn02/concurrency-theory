@@ -5,7 +5,7 @@ class Config:
         raw_trace: str,
         raw_transactions: dict[str, str],
         output_directory_path:str,
-        labels_with_indices:bool
+        labels_with_indices:bool=False
         ):
         self.alphabet = alphabet
         self.raw_trace = raw_trace
