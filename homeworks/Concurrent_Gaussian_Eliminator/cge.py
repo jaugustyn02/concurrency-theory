@@ -1,5 +1,4 @@
 from lib.GaussianEliminationDependencyAnalysisTool.gedat import GEDAT
-from lib.GaussianEliminationDependencyAnalysisTool.modules.task import Task
 from modules.file_input_parser import FileInputParser
 import concurrent.futures
 
@@ -13,12 +12,12 @@ class CGE:
         self.fnf = self.gedat.get_fnf()
 
     
-    # A_i_k - finding the multiplier for row i to subtract it from row k
+    # A_i_k - finding the multiplier for row i to subtract it from row k,
     # m_k_i = M_k_i/M_i_i
     def thread_A(self, m: list[list[float]], M: list[list[float]], i: int, k: int):
         m[k][i] = M[k][i] / M[i][i]
     
-    # B_i_j_k - multiplying the j-th element of row i by the multiplier to subtract from row k
+    # B_i_j_k - multiplying the j-th element of row i by the multiplier to subtract from row k,
     # n_k_i_j = M_i_j * m_k_i
     def thread_B(self, n: list[list[list[float]]], m: list[list[float]], M: list[list[float]], i: int, j: int, k: int):
         n[k][i][j] = M[i][j] * m[k][i]
@@ -28,25 +27,6 @@ class CGE:
     def thread_C(self, M: list[list[float]], n: list[list[list[float]]], i: int, j: int, k: int):
         M[k][j] = M[k][j] - n[k][i][j]
     
-    def print_2d_matrix(self, matrix: list[list[float]]):
-        for row in matrix:
-            for i, elem in enumerate(row):
-                if i == len(row)-1:
-                    print(f'| {elem:.2f}')
-                else:
-                    print(f'{elem:.2f}', end=' ')
-
-    def print_3d_matrix(self, matrix: list[list[list[float]]]):
-        for i, row in enumerate(matrix):
-            print(f'k = {i}')
-            for j, col in enumerate(row):
-                for k, elem in enumerate(col):
-                    if k == len(col)-1:
-                        print(f'| {elem:.2f}')
-                    else:
-                        print(f'{elem:.2f}', end=' ')
-            print()
-
     def run(self, verbose=False):
         print('Running CGE...')
 
@@ -77,6 +57,27 @@ class CGE:
         print('Result:')
         self.print_2d_matrix(self.M)
 
+####################################################################################################
+
+    def print_2d_matrix(self, matrix: list[list[float]]):
+        for row in matrix:
+            for i, elem in enumerate(row):
+                if i == len(row)-1:
+                    print(f'| {elem:.2f}')
+                else:
+                    print(f'{elem:.2f}', end=' ')
+
+    def print_3d_matrix(self, matrix: list[list[list[float]]]):
+        for i, row in enumerate(matrix):
+            print(f'k = {i}')
+            for j, col in enumerate(row):
+                for k, elem in enumerate(col):
+                    if k == len(col)-1:
+                        print(f'| {elem:.2f}')
+                    else:
+                        print(f'{elem:.2f}', end=' ')
+            print()
+
     def save_matrix(self, file_name):
         with open(file_name, 'w') as f:
             for row in self.M:
@@ -85,4 +86,3 @@ class CGE:
                         f.write(f'{elem:.2f}\n')
                     else:
                         f.write(f'{elem:.2f} ')
-    

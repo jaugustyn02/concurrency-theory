@@ -1,19 +1,27 @@
 from lib.DependencyAnalysisTool.dat import DAT
 from lib.DependencyAnalysisTool.config import Config as DATConfig
-import lib.GaussianEliminationDependencyAnalysisTool.config as cfg
+from lib.GaussianEliminationDependencyAnalysisTool.config import Config
 from lib.GaussianEliminationDependencyAnalysisTool.modules.task import Task
 
 
 # Gaussian Elimination Dependency Analysis Tool
 class GEDAT:
-    def __init__(self, matrix_size: int):
+    def __init__(self, matrix_size: int, cfg: Config = Config()):
         self.matrix_size = matrix_size
         self.build_alphabet()
         self.build_transactions()
         self.build_trace()
         
-        dat_config = DATConfig(self.alphabet, self.trace, self.transactions, cfg.OUTPUT_DIRECTORY_PATH, cfg.LABELS_WITH_INDICES)
-        self.dat = DAT(dat_config)
+        dat_config = DATConfig(
+            OUTPUT_DIRECTORY_PATH=cfg.OUTPUT_DIRECTORY_PATH,
+            PRINT_FNF=cfg.PRINT_FNF,
+            SAVE_FNF=cfg.SAVE_FNF,
+            PRINT_PLOT=cfg.PRINT_PLOT,
+            EXPORT_PLOT_TO_PNG=cfg.EXPORT_PLOT_TO_PNG,
+            EXPORT_GRAPH_TO_DOT=cfg.EXPORT_GRAPH_TO_DOT,
+            LABELS_WITH_INDICES=cfg.LABELS_WITH_INDICES
+        )
+        self.dat = DAT(self.alphabet,self.trace, self.transactions, dat_config)
 
     def build_alphabet(self):
         self.alphabet = []
@@ -49,13 +57,3 @@ class GEDAT:
                 fnf_section.append(Task(task))
             fnf.append(fnf_section)
         return fnf
-
-
-if __name__ == '__main__':
-    cge = GEDAT(4)
-    # cge.dat.print_fnf()
-    # cge.dat.print_graph()
-    cge.dat.save_graph_to_png()
-    cge.dat.export_graph_to_dot()
-    cge.dat.save_fnf()
-    print(cge.get_fnf())

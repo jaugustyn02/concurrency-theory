@@ -1,14 +1,19 @@
 class Config:
     def __init__(
-        self,
-        alphabet: list[str],
-        raw_trace: str,
-        raw_transactions: dict[str, str],
-        output_directory_path:str,
-        labels_with_indices:bool=False
+            self,
+            OUTPUT_DIRECTORY_PATH:str="OUTPUTS/",
+            PRINT_FNF:bool=False,
+            SAVE_FNF:bool=False,
+            PRINT_PLOT:bool=False,
+            EXPORT_PLOT_TO_PNG:bool=False,
+            EXPORT_GRAPH_TO_DOT:bool=False,
+            LABELS_WITH_INDICES:bool=False
         ):
-        self.alphabet = alphabet
-        self.raw_trace = raw_trace
-        self.raw_transactions = raw_transactions
-        self.output_directory_path = output_directory_path
-        self.labels_with_indices = labels_with_indices
+        self.OUTPUT_DIRECTORY_PATH = OUTPUT_DIRECTORY_PATH
+        self.PRINT_FNF = PRINT_FNF
+        self.SAVE_FNF = SAVE_FNF
+        self.PRINT_PLOT = PRINT_PLOT
+        self.EXPORT_PLOT_TO_PNG = EXPORT_PLOT_TO_PNG
+        self.EXPORT_GRAPH_TO_DOT = EXPORT_GRAPH_TO_DOT
+        self.LABELS_WITH_INDICES = LABELS_WITH_INDICES
+

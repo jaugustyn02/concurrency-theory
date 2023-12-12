@@ -3,15 +3,21 @@ from ..modules.dependency_matrix import DependencyMatrix
 import matplotlib.pyplot as plt
 import igraph as ig
 import numpy as np
+import warnings
 
-# Try to uncomment if not working:
-# import matplotlib
-# matplotlib.use('TkAgg')
+
+ # Ignore warnings from matplotlib - UserWarning: Starting a Matplotlib GUI outside of the main thread will likely fail
+warnings.simplefilter("ignore", UserWarning)
 
 
 class DependencyGraph:
     def __init__(self, matrix: DependencyMatrix, w: str, labels_with_indices=False):
         self.labels_with_indices: bool = labels_with_indices
+        self.default_vertex_color: str = 'lightblue'
+        self.default_edge_color: str = 'gray'
+        self.default_layout: str = 'tree'
+        self.vertex_type_colors = {'A': 'green', 'B': 'orange', 'C': 'skyblue'}
+
         self.FNF: list[list[str]]
 
         edges = []
@@ -54,14 +60,19 @@ class DependencyGraph:
 
     def print_graph(self):
         fig, ax = plt.subplots()
+        left = 0.03
+        bottom = 0.03
+        width = 0.94
+        height = 0.94
+        ax = fig.add_axes([left, bottom, width, height])
         ig.plot(
             self.G,
             target=ax,
-            vertex_size=50,
-            vertex_color='lightblue',
+            vertex_size=60,
+            vertex_color=[self.get_vertex_color(v) for v in self.G.vs],
             edge_width=0.8,
-            edge_color="gray",
-            layout=self.G.layout("fr"),
+            edge_color=self.default_edge_color,
+            layout=self.G.layout(self.default_layout),
         )
         plt.show()
 
@@ -73,11 +84,14 @@ class DependencyGraph:
             self.G,
             target=directory_path + 'plot.png',
             vertex_size=50,
-            vertex_color='lightblue',
+            vertex_color=[self.get_vertex_color(v) for v in self.G.vs],
             edge_width=0.8,
-            edge_color="gray",
-            layout=self.G.layout("fr"),
+            edge_color=self.default_edge_color,
+            layout=self.G.layout(self.default_layout),
             bbox=(800, 800),
             margin=100
         )
+
+    def get_vertex_color(self, v):
+        return self.vertex_type_colors.get(v['label'][0], self.default_vertex_color)
 
