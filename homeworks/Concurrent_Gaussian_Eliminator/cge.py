@@ -18,9 +18,9 @@ class CGE:
         m[k][i] = M[k][i] / M[i][i]
     
     # B_i_j_k - multiplying the j-th element of row i by the multiplier to subtract from row k,
-    # n_k_i_j = M_i_j * m_k_i
+    # n_k_j = M_i_j * m_k_i
     def thread_B(self, n: list[list[list[float]]], m: list[list[float]], M: list[list[float]], i: int, j: int, k: int):
-        n[k][i][j] = M[i][j] * m[k][i]
+        n[k][j] = M[i][j] * m[k][i]
 
     # C_i_j_k - subtracting the j-th element of row i from row k,
     # M_k_j = M_k_j - n_k_i
@@ -31,7 +31,7 @@ class CGE:
         print('Running CGE...')
 
         m = [[0 for _ in range(self.M_size)] for _ in range(self.M_size)]
-        n = [[[0 for _ in range(self.M_size+1)] for _ in range(self.M_size)] for _ in range(self.M_size)]
+        n = [[0 for _ in range(self.M_size+1)] for _ in range(self.M_size)]
 
         for section_id, section in enumerate(self.fnf):
             executor = concurrent.futures.ThreadPoolExecutor(max_workers=len(section))

@@ -60,6 +60,8 @@ class DependencyGraph:
 
     def print_graph(self):
         fig, ax = plt.subplots()
+        fig.canvas.manager.set_window_title('Diekert Graph')
+        fig.set_size_inches(8, 8)
         left = 0.03
         bottom = 0.03
         width = 0.94
@@ -94,4 +96,3 @@ class DependencyGraph:
 
     def get_vertex_color(self, v):
         return self.vertex_type_colors.get(v['label'][0], self.default_vertex_color)
-
