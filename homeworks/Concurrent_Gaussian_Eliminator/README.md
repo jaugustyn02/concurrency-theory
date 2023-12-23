@@ -29,14 +29,14 @@ To test this program with sample data, you can run program with these arguments:
 
 Output:
 ````
-sample:
+# sample:
 
 Result matrix:
 2.00 1.00 3.00 | 6.00
 0.00 1.00 2.00 | 3.00
 0.00 0.00 3.00 | 3.00
 
-sample2:
+# sample2:
 
 Result matrix:
 2.00 1.00 3.00 6.00 | 12.00
@@ -44,7 +44,7 @@ Result matrix:
 0.00 0.00 3.00 3.00 | 6.00
 0.00 0.00 0.00 0.00 | 6.00
 
-sample3:
+# sample3:
 
 Result matrix:
 1.00 2.00 3.00 4.00 5.00 | 6.00
@@ -54,11 +54,11 @@ Result matrix:
 0.00 0.00 0.00 0.00 -481.00 | -540.00
 ````
 
-Result window with a plot for input *sample*:
+Result window with a plot - *sample.txt*:
 
 <img src="images/window_plot_sample.png" alt="Result plot for test1" width="500"/>
 
-Saved plot as PNG image in *output* directory for input *test2*:
+Saved plot as PNG image in *output* directory - *sample.txt*:
 
 <img src="images/saved_plot_sample.png" alt="Result plot for test1" width="500"/>
 
@@ -67,12 +67,12 @@ The program can also save the result graph in a *.dot* file.
 ## Input format
 The input file should be in the following format:
 
-    <size of the matrix>    # (integer)
-    <row 1>                 # (float)
-    <row 2>                 # (float)
+    <size of the coefficient matrix>    # (int)
+    <row 1 of the coefficient matrix>   # (float)
+    <row 2 of the coefficient matrix>   # (float)
     ...
-    <row n>                 # (float)
-    <vector of constants>   # (float)
+    <row n of the coefficient matrix>   # (float)
+    <vector of constants>               # (float)
 
 
 For example:
