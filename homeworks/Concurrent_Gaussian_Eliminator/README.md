@@ -18,7 +18,7 @@ To run this program, open terminal in the same directory as [run.py](run.py) and
 
     python run.py <input_file>
 
-# Testing
+## Testing
 To test this program with sample data, you can run program with these arguments:
 
     python run.py input/sample.txt
