@@ -27,40 +27,49 @@ To test this program with sample data, you can run program with these arguments:
 
     python run.py input/sample3.txt
 
-Output:
+Console output:
 ````
 # sample:
 
 Result matrix:
-2.00 1.00 3.00 | 6.00
-0.00 1.00 2.00 | 3.00
-0.00 0.00 3.00 | 3.00
+1.00 0.00 0.00 | 1.00
+0.00 1.00 0.00 | 1.00
+0.00 0.00 1.00 | 1.00
 
 # sample2:
 
 Result matrix:
-2.00 1.00 3.00 6.00 | 12.00
-0.00 1.00 2.00 3.00 | 6.00
-0.00 0.00 3.00 3.00 | 6.00
-0.00 0.00 0.00 0.00 | 6.00
+1.00 0.00 0.00 0.00 | 0.50
+0.00 1.00 0.00 0.00 | 0.50
+0.00 0.00 1.00 0.00 | 0.50
+0.00 0.00 0.00 1.00 | 1.50
 
 # sample3:
 
 Result matrix:
-1.00 2.00 3.00 4.00 5.00 | 6.00
-0.00 1.00 6.00 5.00 5.00 | 4.00
-0.00 0.00 2.00 19.00 17.00 | 20.00
-0.00 0.00 0.00 11.00 111.00 | 164.00
-0.00 0.00 0.00 0.00 -481.00 | -540.00
+1.00 0.00 0.00 0.00 0.00 | -276.91
+0.00 1.00 0.00 0.00 0.00 | 181.82
+0.00 0.00 1.00 0.00 0.00 | -33.56
+0.00 0.00 0.00 1.00 0.00 | 3.58
+0.00 0.00 0.00 0.00 1.00 | 1.12
 ````
 
-Result window with a plot - *sample.txt*:
+File output: *output/result.txt*&nbsp; for *sample.txt*:
+````
+3               # size of the coefficient matrix
+1.0 0.0 0.0
+0.0 1.0 0.0
+0.0 0.0 1.0     # result coefficient matrix
+1.0 1.0 1.0     # vector of constants
+````
 
-<img src="images/window_plot_sample.png" alt="Result plot for test1" width="500"/>
+Result window with a plot for *sample.txt*:
 
-Saved plot as PNG image in *output* directory - *sample.txt*:
+<img src="images/window_plot_sample.png" alt="Result window plot for sample.txt" width="500"/>
 
-<img src="images/saved_plot_sample.png" alt="Result plot for test1" width="500"/>
+Saved plot: *output/plot.png* &nbsp;for *sample.txt*:
+
+<img src="images/saved_plot_sample.png" alt="Result plot for sample.txt" width="500"/>
 
 The program can also save the result graph in a *.dot* file.
 
@@ -83,3 +92,5 @@ For example:
     6.0 5.0 16.0
     6.0 15.0 27.0
     
+## Output file format
+Same as input file format.

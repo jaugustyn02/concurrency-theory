@@ -108,12 +108,13 @@ class CGE:
         for col in range(self.M_size-1, -1, -1):
             for row in range(col-1, -1, -1):
                 self.M[row][self.M_size] -= self.M[row][col] * self.M[col][self.M_size]
-
-        # Nullify elements below the diagonal
-        for row in range(self.M_size):
-            for col in range(row+1, self.M_size):
                 self.M[row][col] = 0
 
+        # Fixing minus zeros floating point errors (-0.0 -> 0.0)
+        for row in range(self.M_size):
+            for col in range(self.M_size+1):
+                self.M[row][col] += 0.0
+            
         if self.cnf.PRINT_RESULT_MATRIX:
             if self.cnf.VERBOSE: print()
             print('Result matrix:')
