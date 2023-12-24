@@ -14,3 +14,7 @@
 - Program pozwala na zapisywanie oraz wyświetlanie ciągu symboli w postaci normalnej Foaty.
 - Program pozwala na zapisywanie oraz wyświetlanie wynikowej macierzy w postaci diagonalnej.
 - Program jest w stanie wykonywać operację pivotingu.
+
+### Sprawdzenie poprawności działania programu
+- Program został przetestowany ręcznie dla macierzy o rozmiarach 3, 4 oraz 5.
+- Program został przetestowany z wykorzystaniem [Sprawdzarki](https://github.com/macwozni/Matrices) załączonej w treści zadania, na macierzach o rozmiarze 3 oraz 10.
