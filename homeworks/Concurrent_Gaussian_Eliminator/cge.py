@@ -36,6 +36,15 @@ class CGE:
     # M_k_j = M_k_j - n_k_i
     def thread_C(self, M: list[list[float]], n: list[list[list[float]]], _i: int, j: int, k: int):
         M[k][j] = M[k][j] - n[k][j]
+
+    def choose_pivot(self, M: list[list[float]], i: int):
+        for row in range(i, self.M_size):
+            if M[row][i] != 0:
+                return row
+        return -1
+    
+    def switch_rows(self, M: list[list[float]], i: int, j: int):
+        M[i], M[j] = M[j], M[i]
     
     def run(self):
         if self.cnf.VERBOSE:
@@ -51,10 +60,21 @@ class CGE:
         m = [[0 for _ in range(self.M_size)] for _ in range(self.M_size)]
         n = [[0 for _ in range(self.M_size+1)] for _ in range(self.M_size)]
 
+        # Variable to track column that is currently being reduced
+        curr_col_to_reduce = 0
+
         for section_id, section in enumerate(self.fnf):
             executor = concurrent.futures.ThreadPoolExecutor(max_workers=len(section))
             for task in section:
                 if task.type == 'A':
+                    if task.i == curr_col_to_reduce and task.k == curr_col_to_reduce+1:
+                        pivot_row = self.choose_pivot(self.M, curr_col_to_reduce)
+                        if pivot_row == -1:
+                            print("Error: Matrix is singular!")
+                            exit(1)
+                        if pivot_row != curr_col_to_reduce:
+                            self.switch_rows(self.M, curr_col_to_reduce, pivot_row)
+                        curr_col_to_reduce += 1
                     executor.submit(self.thread_A, m, self.M, task.i, task.k)
                 elif task.type == 'B':
                     executor.submit(self.thread_B, n, m, self.M, task.i, task.j, task.k)
@@ -73,7 +93,26 @@ class CGE:
                 print()
     
         if self.cnf.VERBOSE:
-            print('Done! - Matrix reduced to row echelon form')
+            print('Matrix reduced to row echelon form')
+            mh.print_2d_matrix(self.M)
+
+        # Divide each row by the leading coefficient
+        for row in range(self.M_size):
+            self.M[row] = [self.M[row][col]/self.M[row][row] for col in range(self.M_size+1)]
+
+        if self.cnf.VERBOSE:
+            print('Matrix divided by leading coefficients')
+            mh.print_2d_matrix(self.M)
+
+        # Back substitution
+        for col in range(self.M_size-1, -1, -1):
+            for row in range(col-1, -1, -1):
+                self.M[row][self.M_size] -= self.M[row][col] * self.M[col][self.M_size]
+
+        # Nullify elements below the diagonal
+        for row in range(self.M_size):
+            for col in range(row+1, self.M_size):
+                self.M[row][col] = 0
 
         if self.cnf.PRINT_RESULT_MATRIX:
             if self.cnf.VERBOSE: print()

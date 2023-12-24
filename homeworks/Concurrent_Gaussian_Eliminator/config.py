@@ -3,7 +3,7 @@ class Config:
         self.OUTPUT_DIRECTORY_PATH = 'output/'
         self.PRINT_FNF = False
         self.SAVE_FNF = True
-        self.PRINT_PLOT = True
+        self.PRINT_PLOT = False
         self.EXPORT_PLOT_TO_PNG = True
         self.EXPORT_GRAPH_TO_DOT = False
         self.PRINT_RESULT_MATRIX = True
