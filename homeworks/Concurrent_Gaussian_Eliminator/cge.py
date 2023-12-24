@@ -93,16 +93,18 @@ class CGE:
                 print()
     
         if self.cnf.VERBOSE:
-            print('Matrix reduced to row echelon form')
+            print('Matrix reduced to row echelon form:')
             mh.print_2d_matrix(self.M)
+            print()
 
         # Divide each row by the leading coefficient
         for row in range(self.M_size):
             self.M[row] = [self.M[row][col]/self.M[row][row] for col in range(self.M_size+1)]
 
         if self.cnf.VERBOSE:
-            print('Matrix divided by leading coefficients')
+            print('Matrix divided by leading coefficients:')
             mh.print_2d_matrix(self.M)
+            print()
 
         # Back substitution
         for col in range(self.M_size-1, -1, -1):
@@ -122,4 +124,6 @@ class CGE:
 
         if self.cnf.SAVE_RESULT_MATRIX:
             mh.save_matrix(self.M, self.cnf.OUTPUT_DIRECTORY_PATH+'result.txt')
-            if self.cnf.VERBOSE: print(f'Result matrix saved to {self.cnf.OUTPUT_DIRECTORY_PATH}result.txt')
+            if self.cnf.VERBOSE:
+                if self.cnf.PRINT_RESULT_MATRIX: print()
+                print(f'Result matrix saved to {self.cnf.OUTPUT_DIRECTORY_PATH}result.txt')
